@@ -28,6 +28,16 @@ class LiquidationPrinter:
 
     @staticmethod
     def print_to_console(symbol, bs, usd_value, qty, price, time):
+        # Write the Liquidation to a file called liq.tx
+        file = open("liq.txt","w")
+        # dont write header
+        if not bs == 'B/S':
+            file.write(str(bs+"\n"))
+            file.write(str(usd_value)+"\n")
+            file.write(str(price))
+        file.close()
+        # end of my garbage
+        
         if bs == 'Buy':
             is_long = LiquidationPrinter.BColor.OKGREEN
         elif bs == 'Sell':
