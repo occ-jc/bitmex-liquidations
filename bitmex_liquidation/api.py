@@ -28,13 +28,15 @@ class LiquidationPrinter:
 
     @staticmethod
     def print_to_console(symbol, bs, usd_value, qty, price, time):
-        # Write the Liquidation to a file called liq.tx
+        # my garbage file writer
         file = open("liq.txt","w")
         # dont write header
         if not bs == 'B/S':
-            file.write(str(bs+"\n"))
-            file.write(str(usd_value)+"\n")
-            file.write(str(price))
+            #dont write orders under 500k
+            if int(usd_value) > 200000:
+                file.write(str(bs+"\n"))
+                file.write(str(usd_value)+"\n")
+                file.write(str(price))
         file.close()
         # end of my garbage
         
